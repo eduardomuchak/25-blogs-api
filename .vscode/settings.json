@@ -1,6 +1,8 @@
 {
   "conventionalCommits.scopes": [
     "migrations",
-    "models"
+    "models",
+    "token",
+    "user"
   ]
 }

@@ -6,6 +6,11 @@ const jwtService = {
     const token = jwt.sign({ data }, process.env.JWT_SECRET);
     return token;
   },
+
+  createUserToken: (data) => {
+    const token = jwt.sign({ data }, process.env.JWT_SECRET);
+    return token;
+  },
 };
 
 module.exports = jwtService;
