@@ -22,6 +22,13 @@ const PostCategory = (sequelize, DataTypes) => {
       as: "post",
       onDelete: "CASCADE",
       onUpdate: "CASCADE",
+      through: {
+        model: models.PostCategory,
+        unique: false,
+        scope: {
+          categoryId: "categoryId",
+        },
+      },
     });
 
     models.BlogPost.belongsToMany(models.Category, {
@@ -29,6 +36,13 @@ const PostCategory = (sequelize, DataTypes) => {
       as: "category",
       onDelete: "CASCADE",
       onUpdate: "CASCADE",
+      through: {
+        model: models.PostCategory,
+        unique: false,
+        scope: {
+          postId: "postId",
+        },
+      },
     });
   }
 
