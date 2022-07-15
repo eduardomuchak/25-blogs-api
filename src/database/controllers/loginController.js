@@ -6,8 +6,8 @@ const LoginController = {
     const { error } = joiSchema.validate(req.body);
 
     if (error) {
-      const [code, message] = error.details[0].message.split('|');
-      return res.status(Number(code)).json({ message });
+      const [status, message] = error.details[0].message.split('|');
+      return res.status(Number(status)).json({ message });
     }
 
     const { email, password } = req.body;

@@ -14,7 +14,6 @@ const UserService = {
     });
     const { error, value } = joiSchema.validate(data);
     if (error) {
-      error.name = 'ValidationError';
       error.status = 400;
       throw error;
     }
@@ -25,7 +24,6 @@ const UserService = {
     const user = await User.findOne({ where: { email } });
     if (user) {
       const error = new Error('User already registered');
-      error.name = 'ConflictError';
       error.status = 409;
       throw error;
     }
@@ -36,6 +34,11 @@ const UserService = {
     const { email } = await User.create(data);
     const token = jwtService.createUserToken(email, process.env.JWT_SECRET);
     return token;
+  },
+
+  async list() {
+    const users = await User.findAll({ attributes: ['id', 'displayName', 'email', 'image'] });
+    return users;
   },
 
 };
