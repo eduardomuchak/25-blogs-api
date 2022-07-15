@@ -41,6 +41,21 @@ const UserService = {
     return users;
   },
 
+  async getById(id) {
+    const user = await User.findOne({
+      where: { id },
+      attributes: ['id', 'displayName', 'email', 'image'],
+    });
+
+    if (!user) {
+      const error = new Error('User does not exist');
+      error.status = 404;
+      throw error;
+    }
+
+    return user;
+  },
+
 };
 
 module.exports = UserService;

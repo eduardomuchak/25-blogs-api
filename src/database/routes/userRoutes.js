@@ -6,5 +6,6 @@ const loginRoutes = Router();
 
 loginRoutes.post('/', userController.create);
 loginRoutes.get('/', auth, userController.list);
+loginRoutes.get('/:id', auth, userController.getById);
 
 module.exports = loginRoutes;
