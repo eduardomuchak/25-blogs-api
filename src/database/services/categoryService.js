@@ -21,6 +21,11 @@ const CategoryService = {
     return dataValues;
   },
 
+  async list() {
+    const categories = await Category.findAll();
+    return categories;
+  },
+
 };
 
 module.exports = CategoryService;

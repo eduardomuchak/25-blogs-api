@@ -5,5 +5,6 @@ const auth = require('../middlewares/auth');
 const categoryRoutes = Router();
 
 categoryRoutes.post('/', auth, categoryController.create);
+categoryRoutes.get('/', auth, categoryController.list);
 
 module.exports = categoryRoutes;

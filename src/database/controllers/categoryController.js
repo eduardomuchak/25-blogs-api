@@ -8,6 +8,11 @@ const CategoryController = {
 
     return res.status(201).json({ id, name });
   },
+
+  async list(_req, res) {
+    const categories = await CategoryService.list();
+    return res.status(200).json(categories);
+  },
 };
 
 module.exports = CategoryController;
