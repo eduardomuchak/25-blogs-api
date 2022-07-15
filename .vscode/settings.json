@@ -3,6 +3,7 @@
     "migrations",
     "models",
     "token",
-    "user"
+    "user",
+    "category"
   ]
 }

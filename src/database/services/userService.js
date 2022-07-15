@@ -1,4 +1,4 @@
-require('dotenv/config');
+const { JWT_SECRET } = require('dotenv/config');
 const Joi = require('joi');
 const { User } = require('../models');
 const jwtService = require('./jwtService');
@@ -32,7 +32,7 @@ const UserService = {
 
   async create(data) {
     const { email } = await User.create(data);
-    const token = jwtService.createUserToken(email, process.env.JWT_SECRET);
+    const token = jwtService.createUserToken(email, JWT_SECRET);
     return token;
   },
 
