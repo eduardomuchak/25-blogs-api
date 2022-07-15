@@ -26,6 +26,17 @@ const CategoryService = {
     return categories;
   },
 
+  async getById(id) {
+    const category = await Category.findOne({
+      where: { id },
+    });
+    if (!category) {
+      const error = new Error('Category does not exist');
+      error.status = 404;
+      throw error;
+    }
+    return category;
+  },
 };
 
 module.exports = CategoryService;

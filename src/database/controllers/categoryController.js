@@ -13,6 +13,12 @@ const CategoryController = {
     const categories = await CategoryService.list();
     return res.status(200).json(categories);
   },
+
+  async getById(req, res) {
+    const { id } = req.params;
+    const category = await CategoryService.getById(id);
+    return res.status(200).json(category);
+  },
 };
 
 module.exports = CategoryController;
