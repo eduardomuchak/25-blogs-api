@@ -20,6 +20,13 @@ const PostService = {
         { model: Category, as: 'categories', through: { attributes: [] } },
       ],
     });
+
+    if (!postWithUserAndCategories) {
+      const error = new Error('Post does not exist');
+      error.status = 404;
+      throw error;
+    }
+
     return postWithUserAndCategories;
   },
 
