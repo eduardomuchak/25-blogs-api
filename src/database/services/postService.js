@@ -10,11 +10,17 @@ const PostService = {
       ],
     });
 
-    const categories = await Category.findAll();
-
-    console.log(categories);
-
     return postsWithUsersAndCategories;
+  },
+
+  async getById(id) {
+    const postWithUserAndCategories = await BlogPost.findByPk(id, {
+      include: [
+        { model: User, as: 'user', attributes: ['id', 'displayName', 'email', 'image'] },
+        { model: Category, as: 'categories', through: { attributes: [] } },
+      ],
+    });
+    return postWithUserAndCategories;
   },
 
 };

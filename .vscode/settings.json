@@ -4,6 +4,7 @@
     "models",
     "token",
     "user",
-    "category"
+    "category",
+    "post"
   ]
 }

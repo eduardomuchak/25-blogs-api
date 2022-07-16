@@ -7,6 +7,11 @@ const PostController = {
     return res.status(200).json(posts);
   },
 
+  async getById(req, res) {
+    const post = await PostService.getById(req.params.id);
+    return res.status(200).json(post);
+  },
+
 };
 
 module.exports = PostController;
