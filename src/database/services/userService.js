@@ -30,6 +30,19 @@ const UserService = {
     return true;
   },
 
+  async findUserId(data) {
+    const { dataValues } = await User.findOne({ where: { email: data.email } });
+
+    if (!dataValues) {
+      const error = new Error('User not nound');
+      error.status = 404;
+      throw error;
+    }
+
+    const { id } = dataValues;
+    return id;
+  },
+
   async create(data) {
     const { email } = await User.create(data);
     const token = jwtService.createUserToken(email, JWT_SECRET);
@@ -54,6 +67,10 @@ const UserService = {
     }
 
     return user;
+  },
+
+  async delete(id) {
+    User.destroy({ where: { id } });
   },
 
 };
