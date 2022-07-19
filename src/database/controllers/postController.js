@@ -45,6 +45,12 @@ const PostController = {
     return res.status(200).json(updatedPost);
   },
 
+  async search(req, res) {
+    const { q } = req.query;
+    const posts = await PostService.search(q);
+    return res.status(200).json(posts);
+  },
+
 };
 
 module.exports = PostController;

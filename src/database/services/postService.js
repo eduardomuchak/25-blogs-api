@@ -117,6 +117,23 @@ const PostService = {
     await BlogPost.update({ title, content }, { where: { id: postId } });
   },
 
+  async search(searchTerm) {
+    const posts = await BlogPost.findAll({
+      where: {
+        [Sequelize.Op.or]: [
+          { title: { [Sequelize.Op.like]: `%${searchTerm}%` } },
+          { content: { [Sequelize.Op.like]: `%${searchTerm}%` } },
+        ],
+      },
+      include: [
+        { model: User, as: 'user', attributes: ['id', 'displayName', 'email', 'image'] },
+        { model: Category, as: 'categories', through: { attributes: [] } },
+      ],
+    });
+
+    return posts;
+  },
+
 };
 
 module.exports = PostService;
