@@ -14,11 +14,14 @@ const PostController = {
   },
 
   async create(req, res) {
+    const { categoryIds } = req.body;
     const { authorization } = req.headers;
 
     const { data } = await jwtService.verifyToken(authorization);
 
     const validPost = PostService.validateBody(req.body);
+
+    await PostService.validateBodyCategoriesId(categoryIds);
 
     const post = await PostService.create(data, validPost);
     return res.status(201).json(post);

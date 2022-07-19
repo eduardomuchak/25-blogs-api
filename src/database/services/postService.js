@@ -23,14 +23,17 @@ const PostService = {
     return value;
   },
 
-  validateBodyCategoriesId: (data) => {
-    const joiSchema = Joi.array().items(Joi.number().required());
-    const { error, value } = joiSchema.validate(data);
-    if (error) {
-      error.status = 400;
-      throw error;
+  validateBodyCategoriesId: async (categoryIds) => {
+    const category = await Category.findAll({
+      where: {
+        id: categoryIds,
+      },
+    });
+    if (category.length !== categoryIds.length) {
+      const myError = new Error('"categoryIds" not found');
+      myError.status = 400;
+      throw myError;
     }
-    return value;
   },
 
   async create(data, validPost) {
