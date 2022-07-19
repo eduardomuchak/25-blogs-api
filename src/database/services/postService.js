@@ -134,6 +134,10 @@ const PostService = {
     return posts;
   },
 
+  async delete(postId) {
+    await BlogPost.destroy({ where: { id: postId } });
+  },
+
 };
 
 module.exports = PostService;

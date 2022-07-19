@@ -51,6 +51,18 @@ const PostController = {
     return res.status(200).json(posts);
   },
 
+  async delete(req, res) {
+    const { id } = req.params;
+    const { authorization } = req.headers;
+
+    const { data } = await jwtService.verifyToken(authorization);
+    const postToBeDeleted = await PostService.getById(id);
+
+    await PostService.isUserAuthorized(postToBeDeleted, data);
+    await PostService.delete(id);
+    return res.sendStatus(204);
+  },
+
 };
 
 module.exports = PostController;
