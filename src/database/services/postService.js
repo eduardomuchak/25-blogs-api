@@ -36,6 +36,33 @@ const PostService = {
     }
   },
 
+  validateBodyUpdatePost: (data) => {
+    const joiSchema = Joi.object({
+      title: Joi.string().required(),
+      content: Joi.string().required(),
+    });
+    const { error, value } = joiSchema.validate(data);
+    if (error) {
+      const myError = new Error('Some required fields are missing');
+      myError.status = 400;
+      throw myError;
+    }
+    return value;
+  },
+
+  isUserAuthorized: async (postToBeUpdated, data) => {
+    const { dataValues } = await User.findOne({ where: { email: data.email } });
+    const { id } = dataValues;
+
+    if (postToBeUpdated.userId !== id) {
+      const error = new Error('Unauthorized user');
+      error.status = 401;
+      throw error;
+    }
+
+    return true;
+  },
+
   async create(data, validPost) {
     const result = await sequelize.transaction(async (transaction) => {
       const { dataValues } = await User.findOne({ where: { email: data.email } });
@@ -83,6 +110,14 @@ const PostService = {
     }
 
     return postWithUserAndCategories;
+  },
+
+  async update(validPost, data) {
+    const { title, content } = validPost;
+    const { dataValues } = await User.findOne({ where: { email: data.email } });
+    const { id } = dataValues;
+
+    await BlogPost.update({ title, content }, { where: { id } });
   },
 
 };
