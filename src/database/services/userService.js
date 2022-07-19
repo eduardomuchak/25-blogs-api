@@ -31,16 +31,15 @@ const UserService = {
   },
 
   async findUserId(data) {
-    const { dataValues } = await User.findOne({ where: { email: data.email } });
-
-    if (!dataValues) {
-      const error = new Error('User not nound');
+    try {
+      const { dataValues } = await User.findOne({ where: { email: data.email } });
+      const { id } = dataValues;
+      return id;
+    } catch (e) {
+      const error = new Error('User not found');
       error.status = 404;
       throw error;
     }
-
-    const { id } = dataValues;
-    return id;
   },
 
   async create(data) {
