@@ -38,7 +38,7 @@ const PostController = {
     const postToBeUpdated = await PostService.getById(id);
 
     await PostService.isUserAuthorized(postToBeUpdated, data);
-    await PostService.update(validPost, data);
+    await PostService.update(validPost, id);
 
     const updatedPost = await PostService.getById(id);
 

@@ -112,12 +112,9 @@ const PostService = {
     return postWithUserAndCategories;
   },
 
-  async update(validPost, data) {
+  async update(validPost, postId) {
     const { title, content } = validPost;
-    const { dataValues } = await User.findOne({ where: { email: data.email } });
-    const { id } = dataValues;
-
-    await BlogPost.update({ title, content }, { where: { id } });
+    await BlogPost.update({ title, content }, { where: { id: postId } });
   },
 
 };
