@@ -22,10 +22,10 @@
               "type": "object",
               "properties": {
                 "email": {
-                  "example": "any"
+                  "example": "eduardo@betrybe.com"
                 },
                 "password": {
-                  "example": "any"
+                  "example": "Senha123"
                 }
               }
             }
@@ -52,16 +52,16 @@
               "type": "object",
               "properties": {
                 "displayName": {
-                  "example": "any"
+                  "example": "Eduardo Muchak"
                 },
                 "email": {
-                  "example": "any"
+                  "example": "eduardo@betrybe.com"
                 },
                 "password": {
-                  "example": "any"
+                  "example": "Senha123"
                 },
                 "image": {
-                  "example": "any"
+                  "example": "https://dummyimage.com/500x500/000/ffffff&text=Imagem+do+Eduardo"
                 }
               }
             }
@@ -74,10 +74,11 @@
         }
       },
       "get": {
-        "description": "",
+        "description": "Try to use this token on authorization field (but you can generate your own by registering a user): eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiZWR1YXJkb0BiZXRyeWJlLmNvbSIsImlhdCI6MTY1ODM0Nzk0NX0.ODkwHhNBVPMxdgNiybLWl3UwXQ53TvS3oA960I86k-w",
         "parameters": [
           {
             "name": "authorization",
+            "required": true,
             "in": "header",
             "type": "string"
           }
@@ -91,7 +92,7 @@
     },
     "/user/{id}": {
       "get": {
-        "description": "",
+        "description": "Try to use this token on authorization field (but you can generate your own by registering a user): eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiZWR1YXJkb0BiZXRyeWJlLmNvbSIsImlhdCI6MTY1ODM0Nzk0NX0.ODkwHhNBVPMxdgNiybLWl3UwXQ53TvS3oA960I86k-w",
         "parameters": [
           {
             "name": "id",
@@ -101,6 +102,7 @@
           },
           {
             "name": "authorization",
+            "required": true,
             "in": "header",
             "type": "string"
           }
@@ -114,10 +116,11 @@
     },
     "/user/me": {
       "delete": {
-        "description": "",
+        "description": "Try to use this token on authorization field (but you can generate your own by registering a user): eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiZWR1YXJkb0BiZXRyeWJlLmNvbSIsImlhdCI6MTY1ODM0Nzk0NX0.ODkwHhNBVPMxdgNiybLWl3UwXQ53TvS3oA960I86k-w",
         "parameters": [
           {
             "name": "authorization",
+            "required": true,
             "in": "header",
             "type": "string"
           }
@@ -131,12 +134,25 @@
     },
     "/categories/": {
       "post": {
-        "description": "",
+        "description": "Try to use this token on authorization field (but you can generate your own by registering a user): eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiZWR1YXJkb0BiZXRyeWJlLmNvbSIsImlhdCI6MTY1ODM0Nzk0NX0.ODkwHhNBVPMxdgNiybLWl3UwXQ53TvS3oA960I86k-w",
         "parameters": [
           {
             "name": "authorization",
+            "required": true,
             "in": "header",
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "Tecnologies"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -146,10 +162,11 @@
         }
       },
       "get": {
-        "description": "",
+        "description": "Try to use this token on authorization field (but you can generate your own by registering a user): eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiZWR1YXJkb0BiZXRyeWJlLmNvbSIsImlhdCI6MTY1ODM0Nzk0NX0.ODkwHhNBVPMxdgNiybLWl3UwXQ53TvS3oA960I86k-w",
         "parameters": [
           {
             "name": "authorization",
+            "required": true,
             "in": "header",
             "type": "string"
           }
@@ -163,7 +180,7 @@
     },
     "/categories/{id}": {
       "get": {
-        "description": "",
+        "description": "Try to use this token on authorization field (but you can generate your own by registering a user): eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiZWR1YXJkb0BiZXRyeWJlLmNvbSIsImlhdCI6MTY1ODM0Nzk0NX0.ODkwHhNBVPMxdgNiybLWl3UwXQ53TvS3oA960I86k-w",
         "parameters": [
           {
             "name": "id",
@@ -173,6 +190,7 @@
           },
           {
             "name": "authorization",
+            "required": true,
             "in": "header",
             "type": "string"
           }
@@ -186,10 +204,11 @@
     },
     "/post/search": {
       "get": {
-        "description": "",
+        "description": "Try to use this token on authorization field (but you can generate your own by registering a user): eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiZWR1YXJkb0BiZXRyeWJlLmNvbSIsImlhdCI6MTY1ODM0Nzk0NX0.ODkwHhNBVPMxdgNiybLWl3UwXQ53TvS3oA960I86k-w",
         "parameters": [
           {
             "name": "authorization",
+            "required": true,
             "in": "header",
             "type": "string"
           },
@@ -208,10 +227,11 @@
     },
     "/post/": {
       "get": {
-        "description": "",
+        "description": "Try to use this token on authorization field (but you can generate your own by registering a user): eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiZWR1YXJkb0BiZXRyeWJlLmNvbSIsImlhdCI6MTY1ODM0Nzk0NX0.ODkwHhNBVPMxdgNiybLWl3UwXQ53TvS3oA960I86k-w",
         "parameters": [
           {
             "name": "authorization",
+            "required": true,
             "in": "header",
             "type": "string"
           }
@@ -223,10 +243,11 @@
         }
       },
       "post": {
-        "description": "",
+        "description": "Try to use this token on authorization field (but you can generate your own by registering a user): eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiZWR1YXJkb0BiZXRyeWJlLmNvbSIsImlhdCI6MTY1ODM0Nzk0NX0.ODkwHhNBVPMxdgNiybLWl3UwXQ53TvS3oA960I86k-w",
         "parameters": [
           {
             "name": "authorization",
+            "required": true,
             "in": "header",
             "type": "string"
           },
@@ -236,8 +257,16 @@
             "schema": {
               "type": "object",
               "properties": {
+                "title": {
+                  "example": "Latest updates, August 1st"
+                },
+                "content": {
+                  "example": "The whole text for the blog post goes here in this key"
+                },
                 "categoryIds": {
-                  "example": "any"
+                  "example": [
+                    1
+                  ]
                 }
               }
             }
@@ -252,7 +281,7 @@
     },
     "/post/{id}": {
       "get": {
-        "description": "",
+        "description": "Try to use this token on authorization field (but you can generate your own by registering a user): eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiZWR1YXJkb0BiZXRyeWJlLmNvbSIsImlhdCI6MTY1ODM0Nzk0NX0.ODkwHhNBVPMxdgNiybLWl3UwXQ53TvS3oA960I86k-w",
         "parameters": [
           {
             "name": "id",
@@ -262,6 +291,7 @@
           },
           {
             "name": "authorization",
+            "required": true,
             "in": "header",
             "type": "string"
           }
@@ -273,7 +303,7 @@
         }
       },
       "put": {
-        "description": "",
+        "description": "Try to use this token on authorization field (but you can generate your own by registering a user): eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiZWR1YXJkb0BiZXRyeWJlLmNvbSIsImlhdCI6MTY1ODM0Nzk0NX0.ODkwHhNBVPMxdgNiybLWl3UwXQ53TvS3oA960I86k-w",
         "parameters": [
           {
             "name": "id",
@@ -283,8 +313,24 @@
           },
           {
             "name": "authorization",
+            "required": true,
             "in": "header",
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "example": "Update post, August 1st"
+                },
+                "content": {
+                  "example": "The whole text to be updated for the blog post goes here in this key"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -294,7 +340,7 @@
         }
       },
       "delete": {
-        "description": "",
+        "description": "Try to use this token on authorization field (but you can generate your own by registering a user): eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiZWR1YXJkb0BiZXRyeWJlLmNvbSIsImlhdCI6MTY1ODM0Nzk0NX0.ODkwHhNBVPMxdgNiybLWl3UwXQ53TvS3oA960I86k-w",
         "parameters": [
           {
             "name": "id",
@@ -304,6 +350,7 @@
           },
           {
             "name": "authorization",
+            "required": true,
             "in": "header",
             "type": "string"
           }
