@@ -1,4 +1,4 @@
-# Store Manager
+# Blogs API
 
 ## About:
 
